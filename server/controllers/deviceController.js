@@ -35,8 +35,7 @@ class DeviceController {
             let {brandId, typeId, limit, page} = req.query
             page = page || 1
 
-            // ---------- Здесь есть ошибка с выводом записей по лимиту! Я поставил && чтобы записи выводились хотя бы. ---------- //
-            limit = limit && 2
+            limit = limit || 2
 
             let offset = page * limit - limit
             let devices;
