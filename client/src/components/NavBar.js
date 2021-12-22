@@ -17,6 +17,7 @@ const NavBar = observer(() => {
     const logOut = () => {
         user.setUser({})
         user.setIsAuth(false)
+        user.setIsAdmin(false)
     }
 
     return (
@@ -32,12 +33,16 @@ const NavBar = observer(() => {
                         >
                             Корзина
                         </Button>
-                        <Button
-                            variant={"outline-dark"}
-                            onClick={() => history.push(ADMIN_ROUTE)}
-                        >
-                            Админ панель
-                        </Button>
+                        {user.isAdmin ?
+                            <Button
+                                variant={"outline-dark"}
+                                onClick={() => history.push(ADMIN_ROUTE)}
+                            >
+                                Админ панель
+                            </Button>
+                            :
+                            <div></div>
+                        }
                         <Button
                             variant={"outline-dark"}
                             onClick={() => logOut()}
